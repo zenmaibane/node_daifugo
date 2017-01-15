@@ -39,15 +39,31 @@ $(document).ready(function () {
     });
 
     //ルーム変更の結果を表示
-    socket.on("joinResult", function (result) {
-        $("#room").text(result.room);
-        // $("#messages").append(divSystemContentElement("Room changed."));
-    });
+    // socket.on("joinResult", function (result) {
+    //     $("#room").text(result.room);
+    //     $("#messages").append(divSystemContentElement("Room changed."));
+    // });
 
     //受信したメッセージを表示
     socket.on("message", function (message) {
         var newElement = $("<div></div>").text(message.text);
         $("#messages").append(newElement);
+    });
+
+    socket.on("card", function (hand) {
+        var nav = $("<div></div>").text("Your Hand:");
+        $("#show-card").append(nav);
+
+        var form = $("<form>",{id:"playerHand"});
+        $("#show-card").append(form);
+
+        var cards = hand.text.split(",");
+        for (var i = 0;  i < cards.length; i++){
+            $("#playerHand").append("<input type='checkbox' value="+i.toString()+">"+cards[i]);
+        }
+        var submit = $("<input>",{type:"submit",
+            value:"手札を出す"});
+        $("#playerHand").append(submit);
     });
 
     //利用できるルームのリストを表示
