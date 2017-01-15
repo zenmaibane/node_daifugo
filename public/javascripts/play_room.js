@@ -16,11 +16,10 @@ PlayRoom.prototype.changeRoom = function (room) {
     });
 };
 
-PlayRoom.prototype.handSubmit = function (room, hand) {
-    console.log("test")
+PlayRoom.prototype.handSubmit = function (room, submittedCardsIndex) {
     var info = {
         room: room,
-        hand: hand
+        submittedCardsIndex: submittedCardsIndex
     };
     this.socket.emit("handSubmit", info);
 };

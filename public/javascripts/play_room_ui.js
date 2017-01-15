@@ -23,9 +23,10 @@ function processUserMessage(chatApp, socket) {
 }
 
 function processHandSubmit(chatApp, socket) {
-    var chackedBoxs = $("#show-card :checkbox:checked");
-    var hand = chackedBoxs.map(function() { return $(this).val(); });
-    chatApp.handSubmit($("#room").text(), hand);
+    var checkedBoxes = $("#show-card :checkbox:checked");
+    var submittedCardsIndex = checkedBoxes.map(function() { return $(this).val();}).get();
+    submittedCardsIndex = submittedCardsIndex.map(function (element) { return Number(element); });
+    chatApp.handSubmit($("#room").text(), submittedCardsIndex);
 }
 
 var socket = io.connect();
@@ -63,9 +64,9 @@ $(document).ready(function () {
         var form = $("<form>",{id:"playerHand"});
         $("#show-card").append(form);
         var cards = hand.text.split(",");
-        cards.forEach(function (card) {
-            $("#playerHand").append("<input type='checkbox' value="+card+">"+card);
-        })
+        for(var i=0; i < cards.length; i++){
+            $("#playerHand").append("<input type='checkbox' value="+i.toString()+">"+cards[i]);
+        }
         var submit = $("<input>",{type:"submit",
             value:"手札を出す", id:"handSubmit"});
         $("#playerHand").append(submit);
