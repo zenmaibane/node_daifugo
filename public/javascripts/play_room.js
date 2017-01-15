@@ -1,8 +1,8 @@
-var Chat = function (socket) {
+var PlayRoom = function (socket) {
     this.socket = socket
 };
 
-Chat.prototype.sendMessage = function (room, text) {
+PlayRoom.prototype.sendMessage = function (room, text) {
     var message = {
         room: room,
         text: text
@@ -10,13 +10,22 @@ Chat.prototype.sendMessage = function (room, text) {
     this.socket.emit("message", message);
 };
 
-Chat.prototype.changeRoom = function (room) {
+PlayRoom.prototype.changeRoom = function (room) {
     this.socket.emit("join", {
         newRoom: room
     });
 };
 
-Chat.prototype.processCommand = function (command) {
+PlayRoom.prototype.handSubmit = function (room, hand) {
+    console.log("test")
+    var info = {
+        room: room,
+        hand: hand
+    };
+    this.socket.emit("handSubmit", info);
+};
+
+PlayRoom.prototype.processCommand = function (command) {
     //コマンドの最初のワードから解析
     var words = command.split(" ");
     var command = words[0].substring(1, words[0].length).toLowerCase();

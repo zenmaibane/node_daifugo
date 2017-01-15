@@ -52,5 +52,5 @@ server.listen(8000, function () {
     console.log("Server listening on port 8000. localhost:8000");
 });
 
-var chatServer = require("./lib/chat_server");
+var chatServer = require("./lib/play_room_server");
 chatServer.listen(server);
