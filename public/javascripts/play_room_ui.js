@@ -41,6 +41,7 @@ $(document).ready(function () {
         } else {
             message = result.message;
         }
+        $("#messages").empty();
         $("#messages").append(divSystemContentElement(message));
     });
 
@@ -71,7 +72,6 @@ $(document).ready(function () {
             value:"手札を出す", id:"handSubmit"});
         $("#playerHand").append(submit);
         $("#playerHand").submit(function () {
-            console.log("ttt")
             processHandSubmit(chatApp, socket);
             return false;
         });
