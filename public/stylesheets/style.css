@@ -10,8 +10,7 @@ a {
 /*アプリケーション幅が800画素で左右がセンタリングされる*/
 #content {
     width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 #room {
