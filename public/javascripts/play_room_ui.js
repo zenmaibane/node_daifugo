@@ -37,7 +37,7 @@ $(document).ready(function () {
     socket.on("nameResult", function (result) {
         var message;
         if (result.success) {
-            message = "You are now know as " + result.name + ".";
+            message = "あなたの名前は" + result.name + "です.";
         } else {
             message = result.message;
         }
