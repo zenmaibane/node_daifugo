@@ -62,11 +62,13 @@ $(document).ready(function () {
         $("#show-card").empty();
         var nav = $("<div></div>").text("Your Hand:");
         $("#show-card").append(nav);
-        var form = $("<form>",{id:"playerHand"});
+        var form = $("<form>",{id:"playerHand",class:"pure-form"});
         $("#show-card").append(form);
         var cards = hand.text.split(",");
         for(var i=0; i < cards.length; i++){
-            $("#playerHand").append("<input type='checkbox' value="+i.toString()+">"+cards[i]);
+            var label = $("<label>",{class:"pure-checkbox"});
+            label.append("<input type='checkbox' value="+i.toString()+">"+cards[i]);
+            $("#playerHand").append(label);
         }
         var submit = $("<input>",{type:"submit",
             value:"手札を出す", id:"handSubmit"});

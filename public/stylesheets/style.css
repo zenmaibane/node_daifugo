@@ -8,24 +8,33 @@ a {
 }
 
 /*アプリケーション幅が800画素で左右がセンタリングされる*/
+
 #content {
     width: 800px;
     margin: 0 auto;
 }
 
 #room {
-    background-color: #ddd;
+    background-color: #dff;
     margin-bottom: 1em;
+    font-size: 26px;
+    padding: 0.5em
+}
+
+#talkingLog {
+    font-size: 18px;
+    padding: 0.3em
 }
 
 #messages {
-    width: 690px;
+    width: 670px;
     height: 300px;
-    overflow: auto; /*メッセージが表示されるdivはコンテンツで満たされたらスクロール表示*/
-
-    background-color: #eee;
+    overflow: auto;
+    /*メッセージが表示されるdivはコンテンツで満たされたらスクロール表示*/
+    background-color: #eff;
     margin-bottom: 1em;
     margin-right: 10px;
+    padding: 0.5em
 }
 
 #room-list {
@@ -44,11 +53,15 @@ a {
 }
 
 #send-massage {
-    width: 700px;
+    width: 625px;
     margin-bottom: 1em;
     margin-right: 1em;
 }
 
 #help {
     font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#show-card {
+    width: 690px;
 }
